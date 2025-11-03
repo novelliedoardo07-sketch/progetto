@@ -1,0 +1,8 @@
+[
+  {
+    "user_id": 1,
+    "survey_id": 1,
+    "option_ids": [1, 2],
+    "timestamp": "2025-10-13T10:00:00+00:00s"
+  }
+]

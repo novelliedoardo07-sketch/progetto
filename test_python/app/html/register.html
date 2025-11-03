@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registrazione</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      form { max-width: 420px; }
+      label { display:block; margin-top: 0.8rem; }
+      input[type="text"], input[type="password"], input[type="number"] {
+        width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px;
+      }
+      .error { color: #b00020; margin-top: 0.5rem; }
+      .success { color: #0a7a07; margin-top: 0.5rem; }
+      button { margin-top: 1rem; padding: 8px 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Crea un nuovo account</h1>
+
+    <form id="register-form">
+      <label>
+        Username
+        <input type="text" id="username" name="username" minlength="3" required />
+      </label>
+
+      <label>
+        Password
+        <input type="password" id="password" name="password" minlength="5" required />
+      </label>
+
+      <label>
+        Conferma password
+        <input type="password" id="password2" name="password2" minlength="5" required />
+      </label>
+
+      <label>
+        Età (opzionale)
+        <input type="number" id="age" name="age" min="0" />
+      </label>
+
+      <div id="messages"></div>
+
+      <button type="submit">Registrati</button>
+    </form>
+
+    <script>
+      const form = document.getElementById('register-form');
+      const messages = document.getElementById('messages');
+
+      function showMessage(text, type='error') {
+        messages.innerHTML = `<div class="${type}">${text}</div>`;
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        messages.innerHTML = '';
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const password2 = document.getElementById('password2').value;
+        const ageVal = document.getElementById('age').value;
+        const age = ageVal === '' ? undefined : Number(ageVal);
+
+        if (password !== password2) {
+          showMessage('Le password non corrispondono', 'error');
+          return;
+        }
+
+        if (username.length < 3) {
+          showMessage('Username troppo corto (min 3 caratteri)', 'error');
+          return;
+        }
+
+        if (password.length < 5) {
+          showMessage('Password troppo corta (min 5 caratteri)', 'error');
+          return;
+        }
+
+        const payload = { username, password };
+        if (age !== undefined) payload.age = age;
+
+        try {
+          const resp = await fetch('http://localhost:8000/users/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (resp.status === 201 || resp.ok) {
+            const data = await resp.json();
+            showMessage('Registrazione avvenuta con successo!', 'success');
+            // Optionally clear the form
+            form.reset();
+          } else {
+            const errText = await resp.text();
+            let detail = errText;
+            try { detail = JSON.parse(errText); } catch(_){}
+            // If API returns JSON with detail
+            if (detail && detail.detail) {
+              showMessage(detail.detail, 'error');
+            } else if (detail && detail.message) {
+              showMessage(detail.message, 'error');
+            } else {
+              showMessage('Errore durante la registrazione: ' + resp.status, 'error');
+            }
+          }
+        } catch (err) {
+          console.error(err);
+          showMessage('Impossibile connettersi al server. Assicurati che FastAPI sia in esecuzione su http://localhost:8000', 'error');
+        }
+      });
+    </script>
+  </body>
+</html>
+

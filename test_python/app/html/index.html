@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sondaggi</title>
+    <style>
+      p {
+        display: inline;
+      }
+      .survey-options {
+        display: none;
+      }
+      span {
+        display: block;
+      }
+      #logout-btn {
+        display: none;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOGIN / REGISTER / LOGOUT -->
+    <table>
+      <tr>
+        <td>
+          <a href="login.html"><button id="login-btn">Login</button></a>
+        </td>
+        <td>
+          <a href="register.html"
+            ><button id="register-btn">Register</button></a
+          >
+        </td>
+        <td><button id="logout-btn" onclick="logout()">Logout</button></td>
+      </tr>
+    </table>
+
+    <h1>Benvenuti nell'APP</h1>
+
+    <button onclick="toggle_sondaggi()">
+      <div id="attivi">mostra sondaggi</div>
+      attivi
+    </button>
+
+    <div id="sondaggi" style="display: none">
+      <h2>Sondaggi attivi</h2>
+      <div id="survey-list"></div>
+    </div>
+
+    <script>
+      let is_open = false;
+      let flag = false;
+
+      function toggle_sondaggi() {
+        const sondaggiDiv = document.getElementById("sondaggi");
+        const toggleBtn = document.getElementById("attivi");
+
+        if (flag) {
+          toggleBtn.innerHTML = "mostra sondaggi";
+          sondaggiDiv.style.display = "none";
+        } else {
+          toggleBtn.innerHTML = "nascondi sondaggi";
+          sondaggiDiv.style.display = "block";
+        }
+
+        flag = !flag;
+      }
+
+      function logout() {
+        localStorage.removeItem("access_token");
+        location.reload();
+      }
+
+      function open_survey(id) {
+        const div = document.querySelector(`[data-id="${id}"]`);
+        if (is_open) {
+          div.style.display = "none";
+        } else {
+          div.style.display = "block";
+        }
+        is_open = !is_open;
+      }
+
+      function submit(id) {
+        alert("Grazie per aver votato!");
+        const div = document.querySelector(`[data-id="${id}"]`);
+        div.style.display = "none";
+        is_open = false;
+      }
+
+      async function load_surveys() {
+        try {
+          const response = await fetch("http://localhost:8000/survey/");
+          const data = await response.json();
+
+          const activeSurveys = data.filter((s) => s.active);
+          const container = document.getElementById("survey-list");
+
+          container.innerHTML = ""; // pulisci eventuali sondaggi precedenti
+
+          activeSurveys.forEach((survey) => {
+            const title = document.createElement("span");
+            title.className = "survey-title";
+
+            const button = document.createElement("button");
+            button.innerText = survey.name;
+            button.onclick = () => open_survey(survey.id);
+            title.appendChild(button);
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.className = "survey-options";
+            optionsDiv.setAttribute("data-id", survey.id);
+
+            survey.options.forEach((opt) => {
+              const li = document.createElement("li");
+
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.name = `option-${survey.id}`;
+              checkbox.value = opt.name;
+
+              const label = document.createElement("p");
+              label.innerText = opt.name;
+
+              li.appendChild(checkbox);
+              li.appendChild(label);
+              optionsDiv.appendChild(li);
+            });
+
+            const submitButton = document.createElement("button");
+            submitButton.innerText = "Vota";
+            submitButton.onclick = () => submit(survey.id);
+            optionsDiv.appendChild(submitButton);
+
+            container.appendChild(title);
+            container.appendChild(optionsDiv);
+          });
+        } catch (err) {
+          console.error("Errore nel caricamento dei sondaggi:", err);
+        }
+      }
+
+      // Mostra/Nasconde Login e Logout in base al token
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = localStorage.getItem("access_token");
+
+        if (token) {
+          document.getElementById("login-btn").style.display = "none";
+          document.getElementById("register-btn").style.display = "none";
+          document.getElementById("logout-btn").style.display = "inline-block";
+        }
+
+        // Carica sondaggi all'avvio
+        load_surveys();
+      });
+    </script>
+  </body>
+</html>

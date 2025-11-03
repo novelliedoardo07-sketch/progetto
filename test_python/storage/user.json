@@ -1,0 +1,44 @@
+{
+    "1": {
+        "username": "mauro",
+        "user_level": "user",
+        "password": "JDJiJDEyJHNMWVBnMVI1NjB2eGVjejR5aXVYSHVIM3FPVWlGWVgzUkVrakduclkuR05TT21kZ2lORWxP",
+        "age": 104,
+        "id": 1
+    },
+    "2": {
+        "username": "admin",
+        "user_level": "admin",
+        "password": "JDJiJDEyJEVSckVBRUt5MmhnRVFZVVhsclVIQWU4MVpTVTRSYk1sSDlkRU1TLzFYeU5Gd1ZZNTNrd0gy",
+        "age": 0,
+        "id": 2
+    },
+    "3": {
+        "username": "string",
+        "user_level": "admin",
+        "password": "JDJiJDEyJGFIUTZNNUNoVTZ6ZE5oa2sybGJYbmVVd1BpZDZLcEJ2dmlGZkZPbjRWcFRvOTE1VzAzQkl1",
+        "age": 0,
+        "id": 3
+    },
+    "4": {
+        "username": "wassy",
+        "user_level": "admin",
+        "password": "JDJiJDEyJDZ1UGxkNVI4QVRvb1d5alVoTjVzaE84LnZwWUZCLmFiSC5uT0J4cWI4UXk2di5oZGxuUFJD",
+        "age": 0,
+        "id": 4
+    },
+    "5": {
+        "username": "tebii",
+        "user_level": "user",
+        "password": "JDJiJDEyJHdYS1g2UU9NdUNYWFp2WHVISlpSdXVuYTB4YzlHQ1JHbzRydnBGMk1FazM4Yk5wWjZ4UmNH",
+        "age": 1,
+        "id": 5
+    },
+    "6": {
+        "username": "nacuta",
+        "user_level": "user",
+        "password": "JDJiJDEyJFlQdG9KU01HT2IuY1hxcU0xM2tPLi5NQko3bXhDSjBIbGF0SUQ0bHBETXRFbG5nYVpXSnZH",
+        "age": 18,
+        "id": 6
+    }
+}
