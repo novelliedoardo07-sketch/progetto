@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Genera username-password</title>
+</head>
+<body>
+  <button id="genera">Genera 1600 username/password</button>
+
+  <script>
+    function randomString(length) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      const array = new Uint32Array(length);
+      crypto.getRandomValues(array);
+      for (let i = 0; i < length; i++) {
+        result += chars[array[i] % chars.length];
+      }
+      return result;
+    }
+
+    function generateUniqueList(count, length) {
+      const used = new Set();
+      const list = [];
+      while (list.length < count) {
+        const s = randomString(length);
+        if (!used.has(s)) {
+          used.add(s);
+          list.push(s);
+        }
+      }
+      return list;
+    }
+
+    function downloadJSON(data, filename) {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById('genera').addEventListener('click', () => {
+      const usernames = generateUniqueList(1600, 3);
+      const passwords = generateUniqueList(1600, 3);
+      const users = usernames.map((u, i) => ({ username: u, password: passwords[i] }));
+      downloadJSON(users, 'users.json');
+    });
+  </script>
+</body>
+</html>

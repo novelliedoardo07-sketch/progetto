@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Valutazione professori Majorana</title>
+  <style>
+    textarea {
+      resize: none;
+      display: block;
+      margin-top: 5px;
+    }
+    #valutazione {
+      display: none; 
+      margin-top: 20px;
+    }
+    .casella {
+      margin-bottom: 20px;
+    }
+    .titoloCasella {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #Invia {
+      position: fixed;      
+      bottom: 20px;           
+      left: 20px;            
+      padding: 15px 20px;     
+      font-size: 20px;        
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Valutazione professori Majorana</h1>
+
+
+  <div id="login">
+    <h3>Accedi per valutare</h3>
+    <label>Codice: <input type="text" id="username"></label><br>
+    <label>Password: <input type="password" id="password"></label><br>
+    <button id="Bottonelogin">Accedi</button>
+    <p id="messaggio"></p>
+  </div>
+
+
+  <div id="valutazione">
+    <label for="professori">Seleziona un professore:</label>
+    <select id="professori">
+      <option value="">--Scegli--</option>
+      <option value="Amato Grazia">Amato Grazia</option>
+      <option value="Annino Mauro">Annino Mauro</option>
+      <option value="Bonetti Rosaria">Bonetti Rosaria</option>
+      <option value="Previtali Manuel">Previtali Manuel</option>
+      <option value="Giocondo Pietro">Giocondo Pietro</option>
+      <option value="Lorenzi Stefano">Lorenzi Stefano</option>
+      <option value="Raffaini Maria Grazia">Raffaini Maria Grazia</option>
+      <option value="Nicolò Stefania Paola">Nicolò Stefania Paola</option>
+      <option value="Manicone Filomena">Manicone Filomena</option>
+      <option value="Titone Elisabetta">Titone Elisabetta</option>
+      <option value="Pievani Patrizia">Pievani Patrizia</option>
+      <option value="De Zuani Paolo">De Zuani Paolo</option>  
+    </select>
+
+    <button id="Scegli">Scegli</button>
+    <button id="Invia">Invia</button>
+
+    <div id="caselleValutazione"></div>
+  </div>
+
+  <script>
+
+    const Bottonelogin = document.getElementById('Bottonelogin');
+    const loginDiv = document.getElementById('login');
+    const valutazioneDiv = document.getElementById('valutazione');
+    const messaggio = document.getElementById('messaggio');
+
+    Bottonelogin.addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if(username === "contiero" && password === "majorana") {
+        loginDiv.style.display = 'none';
+        valutazioneDiv.style.display = 'block';
+      } else {
+        messaggio.textContent = "Credenziali errate, riprova.";
+        messaggio.style.color = "red";
+      }
+    });
+
+    const paroleVietate = [
+      "cazzo", "cazz0", "c4zzo", "coglione", "stronzo", "fottiti", "vaffanculo",
+      "fanculo", "frocio", "sparati", "ammazzati", "porca puttana", "porco",
+      "porca troia", "troia", "troiata", "culo", "figlio di puttana",
+      "pezzo di merda", "merda", "bastardo", "bastarda", "zoccola",
+      "lurido", "sporco", "rompe i coglioni", "rompi palle", "rompiscatole",
+      "schifoso", "idiota", "cretino", "imbecille", "maniaco", "pervertito",
+      "negro", "negraccio", "zingaro", "negra", "terrone", "terrona"
+    ];
+
+    function gestisciParoleVietate(testo) {
+      let testoPulito = testo;
+      paroleVietate.forEach(parola => {
+        const censura = "*".repeat(parola.length);
+        testoPulito = testoPulito.replaceAll(parola, censura);
+      });
+      return testoPulito;
+    }
+
+    const bottoneScegli = document.getElementById('Scegli');
+    const selectProfessori = document.getElementById('professori');
+    const caselleDiv = document.getElementById('caselleValutazione');
+
+    bottoneScegli.addEventListener('click', () => {
+      const professoreSelezionato = selectProfessori.value;
+
+      if(!professoreSelezionato) {
+        alert("Seleziona un professore prima!");
+        return;
+      }
+
+      caselleDiv.innerHTML = '';
+
+      const titoloPos = document.createElement('div');
+      titoloPos.textContent = "Valutazione positiva";
+      titoloPos.classList.add('titoloCasella');
+
+      const textareaPos = document.createElement('textarea');
+      textareaPos.rows = 5;
+      textareaPos.cols = 50;
+      textareaPos.placeholder = `Scrivi qui la valutazione positiva per ${selectProfessori.options[selectProfessori.selectedIndex].text}...`;
+      textareaPos.classList.add('casella');
+
+      const titoloNeg = document.createElement('div');
+      titoloNeg.textContent = "Valutazione negativa";
+      titoloNeg.classList.add('titoloCasella');
+
+      const textareaNeg = document.createElement('textarea');
+      textareaNeg.rows = 5;
+      textareaNeg.cols = 50;
+      textareaNeg.placeholder = `Scrivi qui la valutazione negativa per ${selectProfessori.options[selectProfessori.selectedIndex].text}...`;
+      textareaNeg.classList.add('casella');
+
+      caselleDiv.appendChild(titoloPos);
+      caselleDiv.appendChild(textareaPos);
+      caselleDiv.appendChild(titoloNeg);
+      caselleDiv.appendChild(textareaNeg);
+
+      const Invia = document.getElementById('Invia');
+      Invia.classList.add('Invia');
+
+      [textareaPos, textareaNeg].forEach(textarea => {
+        textarea.addEventListener('input', (e) => {
+          const cursorPos = textarea.selectionStart;
+          textarea.value = gestisciParoleVietate(textarea.value);
+          textarea.selectionStart = textarea.selectionEnd = cursorPos;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
