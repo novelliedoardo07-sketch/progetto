@@ -4,7 +4,7 @@
   <title>Genera username-password</title>
 </head>
 <body>
-  <button id="genera">Genera 1600 username/password</button>
+  <button id="genera">Genera 1770 username/password</button>
 
   <script>
     function randomString(length) {
@@ -42,9 +42,9 @@
     }
 
     document.getElementById('genera').addEventListener('click', () => {
-      const usernames = generateUniqueList(1600, 3);
-      const passwords = generateUniqueList(1600, 3);
-      const users = usernames.map((u, i) => ({ username: u, password: passwords[i] }));
+      const usernames = generateUniqueList(1770, 3);
+      const passwords = generateUniqueList(1770, 3);
+      const users = usernames.map((u, i) => ({ username: u, password: passwords[i], level: "student", id : i + 1 , classe: Math.floor(i/25)+1 , used: false }));
       downloadJSON(users, 'users.json');
     });
   </script>
