@@ -1,300 +1,293 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>crea prof</title>
+    <meta charset="UTF-8">
+    <title>Registrazione Professore + Classi</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        /* ========== SIGNUP BOX ========== */
+        #signupBox {
+            background: white;
+            width: 350px;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+        }
+
+        #signupBox input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            font-size: 15px;
+        }
+
+        #signupBox button {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        #signupBox button:hover {
+            background: #277bb5;
+        }
+
+        /* ========== CLASSES SECTION ========== */
+        #classSection {
+            display: none; /* nascosto finché non si compila la registrazione */
+        }
+
+        #searchBox {
+            margin: 20px auto;
+            display: block;
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        /* ----- CONTENITORE ANNATE (in riga su desktop) ----- */
+        .year-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .year-column {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+
+        .year-column h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            color: #2980b9;
+            text-align: center;
+        }
+
+        .class-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 5px 0;
+        }
+
+        /* ----- MOBILE: annate una sotto l'altra ----- */
+        @media (max-width: 768px) {
+            .year-container {
+                flex-direction: column;
+            }
+        }
+
+
+
+        #confirmButton {
+        padding: 12px 25px;
+        font-size: 16px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    #confirmButton:hover {
+        background-color: #27ae60;
+    }
+
+    #confirmButton:active {
+        transform: scale(0.98);
+    </style>
 </head>
 <body>
-	<input type="username" name="">
-	<input type="password" name="">
- 	<input type="password" name=""> 
- 	<input type="subject" name="">
 
- 	<form>
- 		<div>
-            <input type="checkbox" id="c0000036" name="grClasse" value="1ASC SEDE">
-            <label for="c0000036">1ASC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000004" name="grClasse" value="1BEE EUROPA">
-            <label for="c0000004">1BEE EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000203" name="grClasse" value="1BP SEDE">
-            <label for="c0000203">1BP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000199" name="grClasse" value="1BSC SEDE">
-            <label for="c0000199">1BSC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000218" name="grClasse" value="1CEE EUROPA">
-            <label for="c0000218">1CEE EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000082" name="grClasse" value="1ELO SEDE">
-            <label for="c0000082">1ELO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000007" name="grClasse" value="1GII EUROPA">
-            <label for="c0000007">1GII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000005" name="grClasse" value="1HII EUROPA">
-            <label for="c0000005">1HII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000006" name="grClasse" value="1III EUROPA">
-            <label for="c0000006">1III EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000032" name="grClasse" value="1LII EUROPA">
-            <label for="c0000032">1LII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000043" name="grClasse" value="1MII EUROPA">
-            <label for="c0000043">1MII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000219" name="grClasse" value="1NII EUROPA">
-            <label for="c0000219">1NII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000044" name="grClasse" value="1XTU SEDE">
-            <label for="c0000044">1XTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000067" name="grClasse" value="1YTU EUROPA">
-            <label for="c0000067">1YTU EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000210" name="grClasse" value="1ZTU EUROPA">
-            <label for="c0000210">1ZTU EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000009" name="grClasse" value="2AEE SEDE">
-            <label for="c0000009">2AEE SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000031" name="grClasse" value="2AP SEDE">
-            <label for="c0000031">2AP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000049" name="grClasse" value="2ASC SEDE">
-            <label for="c0000049">2ASC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000100" name="grClasse" value="2BEE EUROPA">
-            <label for="c0000100">2BEE EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000211" name="grClasse" value="2BP SEDE">
-            <label for="c0000211">2BP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000206" name="grClasse" value="2BSC SEDE">
-            <label for="c0000206">2BSC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000045" name="grClasse" value="2ELO SEDE">
-            <label for="c0000045">2ELO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000111" name="grClasse" value="2HII EUROPA">
-            <label for="c0000111">2HII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000071" name="grClasse" value="2III EUROPA">
-            <label for="c0000071">2III EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000069" name="grClasse" value="2LII EUROPA">
-            <label for="c0000069">2LII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000205" name="grClasse" value="2MII EUROPA">
-            <label for="c0000205">2MII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000054" name="grClasse" value="2XTU SEDE">
-            <label for="c0000054">2XTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000070" name="grClasse" value="2YTU EUROPA">
-            <label for="c0000070">2YTU EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000220" name="grClasse" value="2ZTU EUROPA">
-            <label for="c0000220">2ZTU EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000109" name="grClasse" value="3AEI SEDE">
-            <label for="c0000109">3AEI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000016" name="grClasse" value="3AII EUROPA">
-            <label for="c0000016">3AII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000033" name="grClasse" value="3AP SEDE">
-            <label for="c0000033">3AP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000056" name="grClasse" value="3ASC SEDE">
-            <label for="c0000056">3ASC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000017" name="grClasse" value="3ATI SEDE">
-            <label for="c0000017">3ATI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000221" name="grClasse" value="3BEI SEDE">
-            <label for="c0000221">3BEI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000018" name="grClasse" value="3BII EUROPA">
-            <label for="c0000018">3BII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000216" name="grClasse" value="3BP SEDE">
-            <label for="c0000216">3BP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000213" name="grClasse" value="3BSC SEDE">
-            <label for="c0000213">3BSC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000094" name="grClasse" value="3CII EUROPA">
-            <label for="c0000094">3CII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000207" name="grClasse" value="3DII EUROPA">
-            <label for="c0000207">3DII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000102" name="grClasse" value="3ELO SEDE">
-            <label for="c0000102">3ELO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000060" name="grClasse" value="3XTU SEDE">
-            <label for="c0000060">3XTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000091" name="grClasse" value="3YTU SEDE">
-            <label for="c0000091">3YTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000091" name="grClasse" value="3YTU SEDE">
-            <label for="c0000091">3YTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000095" name="grClasse" value="4AEI SEDE">
-            <label for="c0000095">4AEI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000020" name="grClasse" value="4AII EUROPA">
-            <label for="c0000020">4AII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000035" name="grClasse" value="4AP SEDE">
-            <label for="c0000035">4AP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000062" name="grClasse" value="4ASC SEDE">
-            <label for="c0000062">4ASC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000021" name="grClasse" value="4ATI SEDE">
-            <label for="c0000021">4ATI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000047" name="grClasse" value="4BII EUROPA">
-            <label for="c0000047">4BII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000217" name="grClasse" value="4BSC SEDE">
-            <label for="c0000217">4BSC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000222" name="grClasse" value="4BTI SEDE">
-            <label for="c0000222">4BTI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000106" name="grClasse" value="4CII EUROPA">
-            <label for="c0000106">4CII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000114" name="grClasse" value="4DII EUROPA">
-            <label for="c0000114">4DII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000208" name="grClasse" value="4ELO SEDE">
-            <label for="c0000208">4ELO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000074" name="grClasse" value="4XTU SEDE">
-            <label for="c0000074">4XTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000104" name="grClasse" value="4YTU SEDE">
-            <label for="c0000104">4YTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000055" name="grClasse" value="5-LO SEDE">
-            <label for="c0000055">5-LO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000025" name="grClasse" value="5-TI SEDE">
-            <label for="c0000025">5-TI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000023" name="grClasse" value="5AEI SEDE">
-            <label for="c0000023">5AEI SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000024" name="grClasse" value="5AII EUROPA">
-            <label for="c0000024">5AII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000041" name="grClasse" value="5AP SEDE">
-            <label for="c0000041">5AP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000078" name="grClasse" value="5ASC SEDE">
-            <label for="c0000078">5ASC SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000028" name="grClasse" value="5BII EUROPA">
-            <label for="c0000028">5BII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000087" name="grClasse" value="5BP SEDE">
-            <label for="c0000087">5BP SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000115" name="grClasse" value="5CII EUROPA">
-            <label for="c0000115">5CII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000198" name="grClasse" value="5DII EUROPA">
-            <label for="c0000198">5DII EUROPA</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000215" name="grClasse" value="5ELO SEDE">
-            <label for="c0000215">5ELO SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000088" name="grClasse" value="5XTU SEDE">
-            <label for="c0000088">5XTU SEDE</label>
-        </div>
-        <div>
-            <input type="checkbox" id="c0000116" name="grClasse" value="5YTU SEDE">
-            <label for="c0000116">5YTU SEDE</label>
+<!-- ===================== SIGNUP SECTION ===================== -->
+
+<h2>Registrazione Professore</h2>
+
+<div id="signupBox">
+    <input id="username" type="text" placeholder="Username" required>
+    <input id="nome" type="text" placeholder="Nome" required>
+    <input id="password" type="password" placeholder="Password" required>
+    <input id="confirm" type="password" placeholder="Conferma Password" required>
+
+    <button onclick="goToClasses()">Avanti</button>
+</div>
+
+
+<!-- ===================== CLASSES SECTION ===================== -->
+
+<div id="classSection">
+
+    <h2>Seleziona le Classi</h2>
+
+    <input type="text" id="searchBox" placeholder="Cerca classe...">
+
+    <div class="year-container">
+
+        <!-- ===== 1° ANNO ===== -->
+        <div class="year-column">
+            <h3>1° Anno</h3>
+            <div class="class-item"><input type="checkbox"><label>1ASC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>1BEE EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1BP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>1BSC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>1CEE EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1ELO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>1GII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1HII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1III EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1LII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1MII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1NII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1XTU SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>1YTU EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>1ZTU EUROPA</label></div>
         </div>
 
-        <input type="submit" value="Invia">
-    </form>
-</body>
-</html>
+        <!-- ===== 2° ANNO ===== -->
+        <div class="year-column">
+            <h3>2° Anno</h3>
+            <div class="class-item"><input type="checkbox"><label>2AEE SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2AP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2ASC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2BEE EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2BP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2BSC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2ELO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2HII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2III EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2LII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2MII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2XTU SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>2YTU EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>2ZTU EUROPA</label></div>
+        </div>
+
+        <!-- ===== 3° ANNO ===== -->
+        <div class="year-column">
+            <h3>3° Anno</h3>
+            <div class="class-item"><input type="checkbox"><label>3AEI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3AII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>3AP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3ASC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3ATI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3BEI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3BII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>3BP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3BSC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3CII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>3DII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>3ELO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3XTU SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>3YTU SEDE</label></div>
+        </div>
+
+        <!-- ===== 4° ANNO ===== -->
+        <div class="year-column">
+            <h3>4° Anno</h3>
+            <div class="class-item"><input type="checkbox"><label>4AEI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4AII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>4AP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4ASC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4ATI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4BII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>4BSC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4BTI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4CII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>4DII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>4ELO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4XTU SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>4YTU SEDE</label></div>
+        </div>
+
+        <!-- ===== 5° ANNO ===== -->
+        <div class="year-column">
+            <h3>5° Anno</h3>
+            <div class="class-item"><input type="checkbox"><label>5-LO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5-TI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5AEI SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5AII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>5AP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5ASC SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5BII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>5BP SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5CII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>5DII EUROPA</label></div>
+            <div class="class-item"><input type="checkbox"><label>5ELO SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5XTU SEDE</label></div>
+            <div class="class-item"><input type="checkbox"><label>5YTU SEDE</label></div>
+        </div>
+
+
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+    <button id="confirmButton">Conferma Selezione</button>
+</div>
+
+</div>
+
+<script>
+
+// ===== PASSA ALLA SEZIONE CLASSI =====
+function goToClasses() {
+    let user = document.getElementById("username").value.trim();
+    let nome = document.getElementById("nome").value.trim();
+    let pass = document.getElementById("password").value;
+    let conf = document.getElementById("confirm").value;
+
+    if (!user || !nome || !pass || !conf) {
+        alert("Compila tutti i campi.");
+        return;
+    }
+
+    if (pass !== conf) {
+        alert("Le password non coincidono.");
+        return;
+    }
+
+    // Nascondo signup, mostro classi
+    document.getElementById("signupBox").style.display = "none";
+    document.getElementById("classSection").style.display = "block";
+}
+
+// ===== RICERCA CLASSI =====
+document.getElementById("searchBox").addEventListener("keyup", function() {
+    const val = this.value.toLowerCase();
+    const items = document.querySelectorAll(".class-item");
+
+    items.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(val)
+            ? "flex"
+            : "none";
+    });
+});
+</script>
 
 </body>
 </html>
