@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Vista Docente - Feedback</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+    #selezioneClasse {
+      margin-bottom: 20px;
+    }
+    #contenitoreFeedback {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .colonna {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      overflow-y: auto;
+      max-height: 70vh;
+    }
+    .colonna h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .commento {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Feedback ricevuti</h1>
+
+  <!-- Selezione classe -->
+  <div id="selezioneClasse">
+    <label for="classe">Seleziona la classe: </label>
+    <select id="classe">
+      <option value="">--Scegli classe--</option>
+      <option value="3A">3A</option>
+      <option value="3B">3B</option>
+      <option value="4A">4A</option>
+      <option value="4B">4B</option>
+      <option value="5A">5A</option>
+      <option value="5B">5B</option>
+    </select>
+    <button id="filtra">Filtra</button>
+  </div>
+
+  <!-- Contenitore feedback -->
+  <div id="contenitoreFeedback">
+    <div class="colonna">
+      <h3>Feedback positivi</h3>
+      <div id="listaPositivi"></div>
+    </div>
+    <div class="colonna">
+      <h3>Feedback negativi</h3>
+      <div id="listaNegativi"></div>
+    </div>
+  </div>
+
+  <script>
+    const listaPositivi = document.getElementById('listaPositivi');
+    const listaNegativi = document.getElementById('listaNegativi');
+    const classeSelect = document.getElementById('classe');
+    const bottoneFiltra = document.getElementById('filtra');
+
+    // Recupero feedback dal localStorage
+    const feedbackPositivi = JSON.parse(localStorage.getItem("positivi")) || [];
+    const feedbackNegativi = JSON.parse(localStorage.getItem("negativi")) || [];
+
+    // Funzione per mostrare feedback filtrati
+    function mostraFeedback(classe) {
+      listaPositivi.innerHTML = '';
+      listaNegativi.innerHTML = '';
+
+      // Filtriamo solo quelli della classe selezionata (se salvati con prefisso)
+      const posFiltrati = feedbackPositivi.filter(f => !classe || f.startsWith(`[${classe}]`));
+      const negFiltrati = feedbackNegativi.filter(f => !classe || f.startsWith(`[${classe}]`));
+
+      listaPositivi.innerHTML = posFiltrati.map(f => `<div class="commento">${f}</div>`).join('');
+      listaNegativi.innerHTML = negFiltrati.map(f => `<div class="commento">${f}</div>`).join('');
+    }
+
+    // Mostra tutti all'inizio
+    mostraFeedback('');
+
+    bottoneFiltra.addEventListener('click', () => {
+      const classe = classeSelect.value;
+      mostraFeedback(classe);
+    });
+  </script>
+</body>
+</html>
