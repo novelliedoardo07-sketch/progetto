@@ -18,29 +18,86 @@
     }
     .titoloCasella {
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 10px; 
     }
-    #Invia {
-      position: fixed;      
-      bottom: 20px;           
-      left: 20px;            
-      padding: 15px 20px;     
-      font-size: 20px;        
-      border: none;
-      border-radius: 8px;
+    h1 {
+      color: #0000CD;  
+    }
+    button {
+      padding: 5px 8px;
+      font-size: 13px;
+      border-radius: 6px;
       cursor: pointer;
+      border: 2px solid black; 
+    }
+    #Scegli {
+      background-color: #0000CD; 
+      color: white;
+    }
+
+    #Invia {
+      background-color: #0000CD; 
+      color: white;
+    }
+    #Accedi {
+      margin-top: 17px;
+      background-color: #0000CD;
+      color: white;
+    }
+    #Invia:hover {
+      background-color: #00008B; 
+    }
+    #Scegli:hover {
+      background-color: #00008B;
+    }
+    #Accedi:hover {
+      background-color: #00008B;
+    }
+    #logo {
+      position: absolute;   
+      top: 10px;           
+      right: 10px;          
+      width: 80px;          
+      height: auto;         
+    }
+    #contatti{
+      position: fixed;     
+      bottom: 0;           
+      left: 0;
+      width: 100%; 
+      margin-top: 320px;
+      background-color: #0000CD;   
+      color: white;                         
+      padding: 15px;                         
+      font-size: 14px;            
+      border-top: 2px solid black;
+    }
+    #contatti h4{
+      margin: 10px 0;
+    }
+     #login label {
+    font-size: 18px;   
+    }
+    #valutazione label {
+      font-size: 18px;   
+      font-weight: bold; 
+    }
+    #professori {
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
+  <p id="errore" style="color:red; font-weight:bold;"></p>
   <h1>Valutazione professori Majorana</h1>
+  <img src="logo.png" alt="logo scuola" id="logo">
 
 
   <div id="login">
-    <h3>Accedi per valutare</h3>
+    <h2>Accedi per valutare</h2>
     <label>Codice: <input type="text" id="username"></label><br>
     <label>Password: <input type="password" id="password"></label><br>
-    <button id="Bottonelogin">Accedi</button>
+    <button id="Accedi">Accedi</button>
     <p id="messaggio"></p>
   </div>
 
@@ -69,14 +126,22 @@
     <div id="caselleValutazione"></div>
   </div>
 
+  <div id="contatti">
+    <h2>I nostri contatti</h2>
+    <h4>contiero.leonardo07@majorana.org</h4>
+    <h4>nacuta.nicolas07@majorana.org</h4>
+    <h4>novelli.edoardo07@majorana.org</h4>
+    <h4>wassef.mena05@majorana.org</h4>
+  </div>
+
   <script>
 
-    const Bottonelogin = document.getElementById('Bottonelogin');
+    const Accedi = document.getElementById('Accedi');
     const loginDiv = document.getElementById('login');
     const valutazioneDiv = document.getElementById('valutazione');
     const messaggio = document.getElementById('messaggio');
 
-    Bottonelogin.addEventListener('click', () => {
+    Accedi.addEventListener('click', () => {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
@@ -149,6 +214,25 @@
 
       const Invia = document.getElementById('Invia');
       Invia.classList.add('Invia');
+
+      const errore = document.getElementById('errore');
+
+      Invia.addEventListener('click', () => {
+      const textareaPos = document.querySelector('#caselleValutazione textarea:nth-of-type(1)');
+      const textareaNeg = document.querySelector('#caselleValutazione textarea:nth-of-type(2)');
+
+      if (!textareaPos || !textareaNeg || textareaPos.value.trim() === "" || textareaNeg.value.trim() === "") {
+        errore.textContent = "Prima metti tutte le valutazioni!";
+        return; 
+      }
+      errore.textContent = "";
+      valutazioneDiv.style.display = 'none';
+      loginDiv.style.display = 'block';
+      document.getElementById('username').value = "";
+      document.getElementById('password').value = "";
+      caselleDiv.innerHTML = "";
+      });
+
 
       [textareaPos, textareaNeg].forEach(textarea => {
         textarea.addEventListener('input', (e) => {
