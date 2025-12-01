@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Feedback</title>
+</head>
+<body>
+  <h1>Generatore di feedback di test</h1>
+  <button id="genera">Genera feedback di prova</button>
+  <p>Dopo aver cliccato, apri <b>docente.html</b> per vedere i risultati.</p>
+
+  <script>
+    document.getElementById('genera').addEventListener('click', () => {
+      // Creiamo array di feedback con prefisso classe
+      const feedbackPositivi = [
+        "[3A] Professore molto chiaro nelle spiegazioni",
+        "[3B] Disponibile ad aiutare gli studenti",
+        "[4A] Le lezioni sono interessanti e coinvolgenti",
+        "[5A] Ottimo metodo di insegnamento"
+      ];
+
+      const feedbackNegativi = [
+        "[3A] Spiega troppo velocemente alcuni argomenti",
+        "[3B] A volte assegna troppi compiti",
+        "[4A] Difficile da seguire quando parla piano",
+        "[5A] Non sempre risponde alle domande"
+      ];
+
+      // Salviamo nel localStorage
+      localStorage.setItem("positivi", JSON.stringify(feedbackPositivi));
+      localStorage.setItem("negativi", JSON.stringify(feedbackNegativi));
+
+      alert("Feedback di prova generati! Ora apri docente.html per testarli.");
+    });
+  </script>
+</body>
+</html>
