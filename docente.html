@@ -42,7 +42,6 @@
 <body>
   <h1>Feedback ricevuti</h1>
 
-  <!-- Selezione classe -->
   <div id="selezioneClasse">
     <label for="classe">Seleziona la classe: </label>
     <select id="classe">
@@ -57,7 +56,6 @@
     <button id="filtra">Filtra</button>
   </div>
 
-  <!-- Contenitore feedback -->
   <div id="contenitoreFeedback">
     <div class="colonna">
       <h3>Feedback positivi</h3>
@@ -75,16 +73,13 @@
     const classeSelect = document.getElementById('classe');
     const bottoneFiltra = document.getElementById('filtra');
 
-    // Recupero feedback dal localStorage
     const feedbackPositivi = JSON.parse(localStorage.getItem("positivi")) || [];
     const feedbackNegativi = JSON.parse(localStorage.getItem("negativi")) || [];
 
-    // Funzione per mostrare feedback filtrati
     function mostraFeedback(classe) {
       listaPositivi.innerHTML = '';
       listaNegativi.innerHTML = '';
 
-      // Filtriamo solo quelli della classe selezionata (se salvati con prefisso)
       const posFiltrati = feedbackPositivi.filter(f => !classe || f.startsWith(`[${classe}]`));
       const negFiltrati = feedbackNegativi.filter(f => !classe || f.startsWith(`[${classe}]`));
 
@@ -92,7 +87,6 @@
       listaNegativi.innerHTML = negFiltrati.map(f => `<div class="commento">${f}</div>`).join('');
     }
 
-    // Mostra tutti all'inizio
     mostraFeedback('');
 
     bottoneFiltra.addEventListener('click', () => {
@@ -102,3 +96,4 @@
   </script>
 </body>
 </html>
+
