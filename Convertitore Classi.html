@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Convertitore Classi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Incolla qui le classi (formato originale)</h2>
+
+<textarea id="input">
+1AEE SEDE | 25
+1AP SEDE | 27
+1ASC SEDE | 29
+1BEE EUROPA | 25
+1BP SEDE | 28
+1BSC SEDE | 27
+</textarea>
+
+<br>
+<button onclick="converti()">Converti</button>
+
+<h2>HTML generato</h2>
+<pre id="output"></pre>
+
+<script>
+function converti() {
+    const input = document.getElementById("input").value.trim();
+    const lines = input.split("\n");
+
+    const anni = {};
+
+    lines.forEach(line => {
+        if (!line.trim()) return;
+
+        // prende solo "1ASC SEDE"
+        const classe = line.split("|")[0].trim();
+        const anno = classe.charAt(0);
+
+        if (!anni[anno]) anni[anno] = [];
+        anni[anno].push(classe);
+    });
+
+    let html = "";
+
+    Object.keys(anni).sort().forEach(anno => {
+        html += `<!-- ===== ${anno}° ANNO ===== -->\n`;
+        html += `<div class="year-column">\n`;
+        html += `    <h3>${anno}° Anno</h3>\n`;
+
+        anni[anno].forEach(classe => {
+            html += `    <div class="class-item"><input type="checkbox"><label>${classe}</label></div>\n`;
+        });
+
+        html += `</div>\n\n`;
+    });
+
+    document.getElementById("output").textContent = html;
+}
+</script>
+
+</body>
+</html>
