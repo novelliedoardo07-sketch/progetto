@@ -129,7 +129,7 @@ button:hover {
 </style>
 </head>
 <body>
-  <p id="errore" style="color:red; font-weight:bold;"></p>
+  <p id="errore"></p>
   <h1>Valutazione professori Majorana</h1>
   <img src="logo.png" alt="logo scuola" id="logo">
 
@@ -161,8 +161,7 @@ button:hover {
       <option value="De Zuani Paolo">De Zuani Paolo</option>  
     </select>
 
-    <button id="Scegli">Scegli</button>
-    <button id="Invia">Invia</button>
+    <button id="Invia">Invia tutte le valutazioni</button>
 
     <div id="caselleValutazione"></div>
   </div>
@@ -221,19 +220,30 @@ button:hover {
     "Pievani Patrizia","De Zuani Paolo"
   ];
 
-  let professoriValutati = [];
+  let feedbackSalvati = {};  
+  let ultimoProfSelezionato = null;
 
-  const bottoneScegli = document.getElementById('Scegli');
   const selectProfessori = document.getElementById('professori');
   const caselleDiv = document.getElementById('caselleValutazione');
 
-  bottoneScegli.addEventListener('click', () => {
+  selectProfessori.addEventListener('change', () => {
     const professoreSelezionato = selectProfessori.value;
 
-    if(!professoreSelezionato) {
-      alert("Seleziona un professore prima!");
-      return;
+    if (!professoreSelezionato) return;
+
+    if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+            feedbackSalvati[ultimoProfSelezionato] = {
+                positiva: pos.value,
+                negativa: neg.value
+            };
+        }
     }
+
+    ultimoProfSelezionato = professoreSelezionato;
 
     caselleDiv.innerHTML = '';
 
@@ -242,6 +252,7 @@ button:hover {
     titoloPos.classList.add('titoloCasella');
 
     const textareaPos = document.createElement('textarea');
+    textareaPos.id = "textareaPos";
     textareaPos.rows = 5;
     textareaPos.cols = 50;
     textareaPos.placeholder = `Scrivi qui la valutazione positiva per ${professoreSelezionato}...`;
@@ -252,6 +263,7 @@ button:hover {
     titoloNeg.classList.add('titoloCasella');
 
     const textareaNeg = document.createElement('textarea');
+    textareaNeg.id = "textareaNeg";
     textareaNeg.rows = 5;
     textareaNeg.cols = 50;
     textareaNeg.placeholder = `Scrivi qui la valutazione negativa per ${professoreSelezionato}...`;
@@ -262,40 +274,10 @@ button:hover {
     caselleDiv.appendChild(titoloNeg);
     caselleDiv.appendChild(textareaNeg);
 
-    const Invia = document.getElementById('Invia');
-    const errore = document.getElementById('errore');
-
-    Invia.onclick = () => {
-      if (textareaPos.value.trim() === "" || textareaNeg.value.trim() === "") {
-        errore.textContent = "Prima metti tutte le valutazioni!";
-        return;
-      }
-
-      errore.textContent = "";
-
-      // Segna il professore come valutato
-      if (!professoriValutati.includes(professoreSelezionato)) {
-        professoriValutati.push(professoreSelezionato);
-      }
-
-      // Controlla chi manca
-      const mancanti = professoriDaValutare.filter(p => !professoriValutati.includes(p));
-
-      if (mancanti.length > 0) {
-        errore.textContent = `Devi ancora valutare: ${mancanti.join(", ")}`;
-        return;
-      }
-
-      // Tutti valutati → reset
-      alert("Hai valutato tutti i professori! Grazie!");
-
-      valutazioneDiv.style.display = 'none';
-      loginDiv.style.display = 'block';
-      document.getElementById('username').value = "";
-      document.getElementById('password').value = "";
-      caselleDiv.innerHTML = "";
-      professoriValutati = [];
-    };
+    if (feedbackSalvati[professoreSelezionato]) {
+        textareaPos.value = feedbackSalvati[professoreSelezionato].positiva;
+        textareaNeg.value = feedbackSalvati[professoreSelezionato].negativa;
+    }
 
     [textareaPos, textareaNeg].forEach(textarea => {
       textarea.addEventListener('input', () => {
@@ -304,6 +286,46 @@ button:hover {
         textarea.selectionStart = textarea.selectionEnd = cursorPos;
       });
     });
+  });
+
+  const Invia = document.getElementById('Invia');
+  const errore = document.getElementById('errore');
+
+  Invia.addEventListener('click', () => {
+
+    if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+            feedbackSalvati[ultimoProfSelezionato] = {
+                positiva: pos.value,
+                negativa: neg.value
+            };
+        }
+    }
+
+    let mancanti = [];
+
+for (let prof of professoriDaValutare) {
+    if (!feedbackSalvati[prof] ||
+        feedbackSalvati[prof].positiva.trim() === "" ||
+        feedbackSalvati[prof].negativa.trim() === "") {
+
+        mancanti.push(prof);
+    }
+}
+
+if (mancanti.length > 0) {
+    errore.textContent = "Mancano le valutazioni per: " + mancanti.join(", ");
+    return;
+}
+
+
+    errore.textContent = "";
+    alert("Hai inviato tutte le valutazioni! Grazie!");
+
+    location.reload();
   });
 
 </script>
