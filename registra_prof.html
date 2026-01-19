@@ -5,137 +5,164 @@
     <title>Registrazione Professore + Classi</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
+/* ===== RESET BASE ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        h2 {
-            text-align: center;
-        }
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
 
-        #signupBox {
-            background: white;
-            width: 350px;
-            margin: 0 auto 30px auto;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 6px rgba(0,0,0,0.1);
-        }
+/* ===== TITOLI ===== */
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
 
-        #signupBox input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 6px;
-            border: 1px solid #bbb;
-            font-size: 15px;
-        }
+/* ===== SIGNUP BOX ===== */
+#signupBox {
+    background: white;
+    width: 350px;
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
 
-        #signupBox button {
-            width: 100%;
-            padding: 10px;
-            background: #0000CD;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
+/* ===== INPUT SIGNUP ===== */
+#signupBox input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
 
-        #signupBox button:hover {
-            background: #00008B;
-        }
+/* ===== BOTTONI SIGNUP ===== */
+#signupBox button {
+    width: 100%;
+    padding: 10px;
+    background: #0000CD;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 10px;
+}
 
-        #classSection {
-            display: none; /* nascosto finché non si compila la registrazione */
-        }
+#signupBox button:hover {
+    background: #00008B;
+}
 
-        #searchBox {
-            margin: 20px auto;
-            display: block;
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #bbb;
-            border-radius: 6px;
-        }
+/* ===== SEZIONE CLASSI ===== */
+#classSection {
+    display: none;
+}
 
-        /* ----- CONTENITORE ANNATE (in riga su desktop) ----- */
-        .year-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
+/* ===== SEARCH BOX ===== */
+#searchBox {
+    display: block;
+    width: 300px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
 
-        .year-column {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            width: 100%;
-        }
+/* ===== CONTENITORE ANNATE ===== */
+.year-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-        .year-column h3 {
-            margin-top: 0;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            color: #2980b9;
-            text-align: center;
-        }
+/* ===== COLONNA ANNO ===== */
+.year-column {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
 
-        .class-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 5px 0;
-        }
+/* ===== TITOLO ANNO ===== */
+.year-column h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    color: #2980b9;
+    text-align: center;
+}
 
-        /* ----- MOBILE: annate una sotto l'altra ----- */
-        @media (max-width: 768px) {
-            .year-container {
-                flex-direction: column;
-            }
-        }
+/* ===== CLASSE ===== */
+.class-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 5px 0;
+    font-size: 14px;
+}
 
-
-
-        #confirmButton {
-        padding: 12px 25px;
-        font-size: 16px;
-        background-color: #0000CD;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s;
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .year-container {
+        flex-direction: column;
     }
+}
 
-    #confirmButton:hover {
-        background-color: #00008B;
-    }
+/* ===== BOTTONE CONFERMA ===== */
+#confirmButton {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #0000CD;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-    #confirmButton:active {
-        transform: scale(0.98);
-    }
-    #contatti{
-      position: fixed;     
-      bottom: 0;           
-      left: 0;
-      width: 100%; 
-      margin-top: 320px;
-      background-color: #0000CD;   
-      color: white;                         
-      padding: 15px;                         
-      font-size: 14px;            
-      border-top: 2px solid black;
-    }
-    #contatti h4{
-      margin: 10px 0;
-    </style>
+#confirmButton:hover {
+    background-color: #00008B;
+}
+
+#confirmButton:active {
+    transform: scale(0.98);
+}
+
+/* ===== CONTATTI ===== */
+#contatti {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0000CD;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 2px solid black;
+}
+
+#contatti h4 {
+    margin: 10px 0;
+    font-weight: normal;
+}
+</style>
+
 </head>
 <body>
 
