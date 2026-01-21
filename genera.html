@@ -1,52 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <title>Genera username-password</title>
+    <meta charset="UTF-8">
+    <title>Genera users.json</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            margin-top: 15px;
+            max-height: 300px;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
-  <button id="genera">Genera 1770 username/password</button>
 
-  <script>
-    function randomString(length) {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let result = '';
-      const array = new Uint32Array(length);
-      crypto.getRandomValues(array);
-      for (let i = 0; i < length; i++) {
-        result += chars[array[i] % chars.length];
-      }
-      return result;
+<h2>Generazione automatica users.json</h2>
+
+<button onclick="generaUsers()">Genera users.json</button>
+
+<h3>Anteprima users.json</h3>
+<pre id="output">Premi il pulsante per generare il file…</pre>
+
+<script>
+let users = [];
+
+// genera stringhe casuali (username / password)
+function randomString(length) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+        result += chars[Math.floor(Math.random() * chars.length)];
     }
+    return result;
+}
 
-    function generateUniqueList(count, length) {
-      const used = new Set();
-      const list = [];
-      while (list.length < count) {
-        const s = randomString(length);
-        if (!used.has(s)) {
-          used.add(s);
-          list.push(s);
+async function generaUsers() {
+    try {
+        // carica automaticamente il file locale
+        const response = await fetch("classiMajo2025.json");
+        if (!response.ok) {
+            throw new Error("File non trovato");
         }
-      }
-      return list;
-    }
 
-    function downloadJSON(data, filename) {
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(url);
-    }
+        const classi = await response.json();
+        users = [];
+        let globalId = 1;
 
-    document.getElementById('genera').addEventListener('click', () => {
-      const usernames = generateUniqueList(1770, 3);
-      const passwords = generateUniqueList(1770, 3);
-      const users = usernames.map((u, i) => ({ username: u, password: passwords[i], level: "student", id : i + 1 , classe: Math.floor(i/25)+1 , used: false }));
-      downloadJSON(users, 'users.json');
-    });
-  </script>
+        classi.forEach(c => {
+            const nomeClasse = `${c.classe} ${c.sede}`;
+
+            for (let i = 0; i < c.studenti; i++) {
+                users.push({
+                    username: randomString(3),
+                    password: randomString(3),
+                    level: "student",
+                    id: globalId++,
+                    classe: nomeClasse,
+                    used: false
+                });
+            }
+        });
+
+        // anteprima a schermo
+        document.getElementById("output").textContent =
+            JSON.stringify(users, null, 2);
+
+        // download dopo un piccolo delay per assicurare che i dati siano pronti
+        setTimeout(scaricaUsers, 500);
+
+    } catch (err) {
+        document.getElementById("output").textContent =
+            "Errore: impossibile caricare classiMajo2025.json";
+        console.error(err);
+    }
+}
+
+function scaricaUsers() {
+    const blob = new Blob(
+        [JSON.stringify(users, null, 2)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "users.json";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+</script>
+
 </body>
 </html>
