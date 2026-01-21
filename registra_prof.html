@@ -286,8 +286,10 @@ h2 {
 
 
     </div>
+
     <div style="text-align: center; margin-top: 20px;">
-    <button id="confirmButton">Conferma Selezione</button>
+    <button onclick="confermaSelezione()" id="confirmButton">Conferma Selezione</button>
+
 </div>
 
 </div>
@@ -299,6 +301,13 @@ h2 {
     <h4>wassef.mena05@majorana.org</h4>
   </div>
 
+<div id="thankYouMessage" style="display:none; text-align:center; margin-top:50px;">
+    <h2>Grazie per la registrazione! 🎉</h2>
+    <p style="font-size:18px; margin-top:15px;">
+        La tua registrazione è avvenuta con successo.<br>
+    </p>
+</div>
+
 <script>
 
 // ===== PASSA ALLA SEZIONE CLASSI =====
@@ -307,6 +316,7 @@ function goToClasses() {
     let nome = document.getElementById("nome").value.trim();
     let pass = document.getElementById("password").value;
     let conf = document.getElementById("confirm").value;
+    const confirmButton = document.getElementById("confirmButton");
 
     if (!user || !nome || !pass || !conf) {
         alert("Compila tutti i campi.");
@@ -334,6 +344,13 @@ document.getElementById("searchBox").addEventListener("keyup", function() {
             : "none";
     });
 });
+
+function confermaSelezione() {
+    document.getElementById("classSection").style.display = "none";
+    document.getElementById("thankYouMessage").style.display = "block";
+}
+
+
 </script>
 
 </body>
