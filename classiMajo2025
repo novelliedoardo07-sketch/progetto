@@ -1,0 +1,357 @@
+[
+  {
+    "classe": "1AEE",
+    "sede": "SEDE",
+    "studenti": 25
+  },
+  {
+    "classe": "1AP",
+    "sede": "SEDE",
+    "studenti": 27
+  },
+  {
+    "classe": "1ASC",
+    "sede": "SEDE",
+    "studenti": 29
+  },
+  {
+    "classe": "1BEE",
+    "sede": "EUROPA",
+    "studenti": 25
+  },
+  {
+    "classe": "1BP",
+    "sede": "SEDE",
+    "studenti": 28
+  },
+  {
+    "classe": "1BSC",
+    "sede": "SEDE",
+    "studenti": 27
+  },
+  {
+    "classe": "1CEE",
+    "sede": "EUROPA",
+    "studenti": 23
+  },
+  {
+    "classe": "1ELO",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "1GII",
+    "sede": "EUROPA",
+    "studenti": 25
+  },
+  {
+    "classe": "1HII",
+    "sede": "EUROPA",
+    "studenti": 23
+  },
+  {
+    "classe": "1III",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "1LII",
+    "sede": "EUROPA",
+    "studenti": 22
+  },
+  {
+    "classe": "1MII",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "1NII",
+    "sede": "EUROPA",
+    "studenti": 25
+  },
+  {
+    "classe": "1XTU",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "1YTU",
+    "sede": "EUROPA",
+    "studenti": 21
+  },
+  {
+    "classe": "1ZTU",
+    "sede": "EUROPA",
+    "studenti": 22
+  },
+  {
+    "classe": "2AEE",
+    "sede": "SEDE",
+    "studenti": 26
+  },
+  {
+    "classe": "2AP",
+    "sede": "SEDE",
+    "studenti": 25
+  },
+  {
+    "classe": "2ASC",
+    "sede": "SEDE",
+    "studenti": 19
+  },
+  {
+    "classe": "2BEE",
+    "sede": "EUROPA",
+    "studenti": 26
+  },
+  {
+    "classe": "2BP",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "2BSC",
+    "sede": "SEDE",
+    "studenti": 21
+  },
+  {
+    "classe": "2ELO",
+    "sede": "SEDE",
+    "studenti": 23
+  },
+  {
+    "classe": "2HII",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "2III",
+    "sede": "EUROPA",
+    "studenti": 23
+  },
+  {
+    "classe": "2LII",
+    "sede": "EUROPA",
+    "studenti": 25
+  },
+  {
+    "classe": "2MII",
+    "sede": "EUROPA",
+    "studenti": 1923
+  },
+  {
+    "classe": "2XTU",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "2YTU",
+    "sede": "EUROPA",
+    "studenti": 19
+  },
+  {
+    "classe": "2ZTU",
+    "sede": "EUROPA",
+    "studenti": 19
+  },
+  {
+    "classe": "3AEI",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "3AII",
+    "sede": "EUROPA",
+    "studenti": 22
+  },
+  {
+    "classe": "3AP",
+    "sede": "SEDE",
+    "studenti": 25
+  },
+  {
+    "classe": "3ASC",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "3ATI",
+    "sede": "SEDE",
+    "studenti": 15
+  },
+  {
+    "classe": "3BEI",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "3BII",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "3BP",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "3BSC",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "3CII",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "3DII",
+    "sede": "EUROPA",
+    "studenti": 25
+  },
+  {
+    "classe": "3ELO",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "3XTU",
+    "sede": "SEDE",
+    "studenti": 18
+  },
+  {
+    "classe": "3YTU",
+    "sede": "SEDE",
+    "studenti": 20
+  },
+  {
+    "classe": "4AEI",
+    "sede": "SEDE",
+    "studenti": 29
+  },
+  {
+    "classe": "4AII",
+    "sede": "EUROPA",
+    "studenti": 21
+  },
+  {
+    "classe": "4AP",
+    "sede": "SEDE",
+    "studenti": 27
+  },
+  {
+    "classe": "4ASC",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "4ATI",
+    "sede": "SEDE",
+    "studenti": 23
+  },
+  {
+    "classe": "4BII",
+    "sede": "EUROPA",
+    "studenti": 24
+  },
+  {
+    "classe": "4BSC",
+    "sede": "SEDE",
+    "studenti": 21
+  },
+  {
+    "classe": "4BTI",
+    "sede": "SEDE",
+    "studenti": 24
+  },
+  {
+    "classe": "4CII",
+    "sede": "EUROPA",
+    "studenti": 23
+  },
+  {
+    "classe": "4DII",
+    "sede": "EUROPA",
+    "studenti": 27
+  },
+  {
+    "classe": "4ELO",
+    "sede": "SEDE",
+    "studenti": 23
+  },
+  {
+    "classe": "4XTU",
+    "sede": "SEDE",
+    "studenti": 16
+  },
+  {
+    "classe": "4YTU",
+    "sede": "SEDE",
+    "studenti": 22
+  },
+  {
+    "classe": "5-TI",
+    "sede": "SEDE",
+    "studenti": 12
+  },
+  {
+    "classe": "5-LO",
+    "sede": "SEDE",
+    "studenti": 7
+  },
+  {
+    "classe": "5AEI",
+    "sede": "SEDE",
+    "studenti": 23
+  },
+  {
+    "classe": "5AII",
+    "sede": "EUROPA",
+    "studenti": 17
+  },
+  {
+    "classe": "5AP",
+    "sede": "SEDE",
+    "studenti": 14
+  },
+  {
+    "classe": "5ASC",
+    "sede": "SEDE",
+    "studenti": 23
+  },
+  {
+    "classe": "5BII",
+    "sede": "EUROPA",
+    "studenti": 17
+  },
+  {
+    "classe": "5BP",
+    "sede": "SEDE",
+    "studenti": 17
+  },
+  {
+    "classe": "5CII",
+    "sede": "EUROPA",
+    "studenti": 16
+  },
+  {
+    "classe": "5DII",
+    "sede": "EUROPA",
+    "studenti": 20
+  },
+  {
+    "classe": "5ELO",
+    "sede": "SEDE",
+    "studenti": 25
+  },
+  {
+    "classe": "5XTU",
+    "sede": "SEDE",
+    "studenti": 19
+  },
+  {
+    "classe": "5YTU",
+    "sede": "SEDE",
+    "studenti": 18
+  }
+]
