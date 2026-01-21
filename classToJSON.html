@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Classi → JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+        button {
+            margin-right: 10px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Converti classi in JSON</h2>
+
+<textarea id="input">
+1AEE SEDE | 25
+1AP SEDE | 27
+1ASC SEDE | 29
+1BEE EUROPA | 25
+1BP SEDE | 28
+1BSC SEDE | 27
+</textarea>
+
+<br><br>
+<button onclick="converti()">Converti</button>
+<button onclick="scaricaJSON()">Scarica JSON</button>
+
+<h3>Output JSON</h3>
+<pre id="output"></pre>
+
+<script>
+let jsonRisultato = [];
+
+function converti() {
+    const testo = document.getElementById("input").value.trim();
+    const righe = testo.split("\n");
+
+    jsonRisultato = righe.map(riga => {
+        const [classeSede, numero] = riga.split("|").map(s => s.trim());
+        const parti = classeSede.split(" ");
+
+        return {
+            classe: parti[0],
+            sede: parti.slice(1).join(" "),
+            studenti: parseInt(numero, 10)
+        };
+    });
+
+    document.getElementById("output").textContent =
+        JSON.stringify(jsonRisultato, null, 2);
+}
+
+function scaricaJSON() {
+    if (jsonRisultato.length === 0) {
+        alert("Prima converti i dati!");
+        return;
+    }
+
+    const blob = new Blob(
+        [JSON.stringify(jsonRisultato, null, 2)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "classi.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
