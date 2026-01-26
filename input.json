@@ -1,0 +1,18 @@
+[
+  {"testo": "Le lezioni sono sempre molto chiare e ben organizzate", "sentimento": "positivo"},
+  {"testo": "Spiega concetti difficili in modo semplice", "sentimento": "positivo"},
+  {"testo": "Disponibile a chiarire qualsiasi dubbio", "sentimento": "positivo"},
+  {"testo": "Parla troppo velocemente durante le lezioni", "sentimento": "negativo"},
+  {"testo": "A volte è difficile capire cosa vuole spiegare", "sentimento": "negativo"},
+  {"testo": "Le slide sono confuse e poco utili", "sentimento": "negativo"},
+  {"testo": "Fornisce esempi pratici molto efficaci", "sentimento": "positivo"},
+  {"testo": "Non ascolta le domande degli studenti", "sentimento": "negativo"},
+  {"testo": "Aiuta a prepararsi bene per gli esami", "sentimento": "positivo"},
+  {"testo": "Non spiega bene i concetti base", "sentimento": "negativo"},
+  {"testo": "Paziente con chi fa fatica a seguire", "sentimento": "positivo"},
+  {"testo": "Professore ignorante e maleducato", "sentimento": "negativo"},
+  {"testo": "Le spiegazioni sono sempre chiare e dettagliate", "sentimento": "positivo"},
+  {"testo": "Spesso sembra non interessarsi alla classe", "sentimento": "negativo"},
+  {"testo": "Esempi concreti rendono la lezione comprensibile", "sentimento": "positivo"},
+  {"testo": "Non rispetta gli studenti e le loro domande", "sentimento": "negativo"}
+]
