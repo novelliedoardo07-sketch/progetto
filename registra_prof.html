@@ -1,140 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Registrazione Professore + Classi</title>
-    <link rel="stylesheet" href="styles_unified.css">
+  <meta charset="UTF-8">
+  <title>Valutazione professori</title>
+    <style>
+/* ===== BASE ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+    margin: 0;
+}
+
+/* ===== TITOLI ===== */
+h1 {
+    color: #0000CD;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ===== TESTI ===== */
+label {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* ===== INPUT / TEXTAREA / SELECT ===== */
+input,
+select,
+textarea {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    padding: 6px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+}
+
+textarea {
+    resize: none;
+    display: block;
+}
+
+/* ===== BOTTONI ===== */
+button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid black;
+    background-color: #0000CD;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+button:hover {
+    background-color: #00008B;
+}
+
+/* ===== SEZIONI ===== */
+#login {
+    margin-top: 20px;
+}
+
+#valutazione {
+    display: none;
+    margin-top: 20px;
+}
+
+/* ===== CASELLE VALUTAZIONE ===== */
+.casella {
+    margin-bottom: 15px;
+}
+
+.titoloCasella {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* ===== SELECT PROFESSORI ===== */
+#professori {
+    margin-top: 10px;
+}
+
+/* ===== LOGO ===== */
+#logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: auto;
+}
+
+/* ===== CONTATTI ===== */
+#contatti {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0000CD;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 2px solid black;
+}
+
+#contatti h4 {
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+/* ===== ERRORI ===== */
+#errore {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
 </head>
 <body>
-
-<!-- ===================== SIGNUP SECTION ===================== -->
-
-<h2>Registrazione Professore</h2>
-
-<div id="signupBox">
-    <input id="username" type="text" placeholder="Username" required>
-    <input id="nome" type="text" placeholder="Nome" required>
-    <input id="password" type="password" placeholder="Password" required>
-    <input id="confirm" type="password" placeholder="Conferma Password" required>
-
-    <button onclick="goToClasses()">Avanti</button>
-</div>
+  <p id="errore"></p>
+  <h1>Valutazione professori</h1>
+  <img src="logo.png" alt="logo scuola" id="logo">
 
 
-<!-- ===================== CLASSES SECTION ===================== -->
-
-<div id="classSection">
-
-    <h2>Seleziona le Classi</h2>
-
-    <input type="text" id="searchBox" placeholder="Cerca classe...">
-
-    <div class="year-container">
-
-        <!-- ===== 1° ANNO ===== -->
-        <div class="year-column">
-            <h3>1° Anno</h3>
-            <div class="class-item"><input type="checkbox"><label>1ASC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>1BEE EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1BP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>1BSC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>1CEE EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1ELO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>1GII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1HII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1III EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1LII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1MII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1NII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1XTU SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>1YTU EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>1ZTU EUROPA</label></div>
-        </div>
-
-        <!-- ===== 2° ANNO ===== -->
-        <div class="year-column">
-            <h3>2° Anno</h3>
-            <div class="class-item"><input type="checkbox"><label>2AEE SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2AP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2ASC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2BEE EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2BP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2BSC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2ELO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2HII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2III EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2LII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2MII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2XTU SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>2YTU EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>2ZTU EUROPA</label></div>
-        </div>
-
-        <!-- ===== 3° ANNO ===== -->
-        <div class="year-column">
-            <h3>3° Anno</h3>
-            <div class="class-item"><input type="checkbox"><label>3AEI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3AII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>3AP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3ASC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3ATI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3BEI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3BII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>3BP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3BSC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3CII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>3DII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>3ELO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3XTU SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>3YTU SEDE</label></div>
-        </div>
-
-        <!-- ===== 4° ANNO ===== -->
-        <div class="year-column">
-            <h3>4° Anno</h3>
-            <div class="class-item"><input type="checkbox"><label>4AEI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4AII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>4AP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4ASC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4ATI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4BII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>4BSC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4BTI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4CII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>4DII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>4ELO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4XTU SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>4YTU SEDE</label></div>
-        </div>
-
-        <!-- ===== 5° ANNO ===== -->
-        <div class="year-column">
-            <h3>5° Anno</h3>
-            <div class="class-item"><input type="checkbox"><label>5-LO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5-TI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5AEI SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5AII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>5AP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5ASC SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5BII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>5BP SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5CII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>5DII EUROPA</label></div>
-            <div class="class-item"><input type="checkbox"><label>5ELO SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5XTU SEDE</label></div>
-            <div class="class-item"><input type="checkbox"><label>5YTU SEDE</label></div>
-        </div>
+  <div id="login">
+    <h2>Accedi per valutare</h2>
+    <label>Codice: <input type="text" id="username"></label><br>
+    <label>Password: <input type="password" id="password"></label><br>
+    <button id="Accedi">Accedi</button>
+    <p id="messaggio"></p>
+  </div>
 
 
-    </div>
+  <div id="valutazione">
+    <label for="professori">Seleziona un professore:</label>
+    <select id="professori">
+      <option value="">--Scegli--</option>
+      <option value="Amato Grazia">Amato Grazia</option>
+      <option value="Annino Mauro">Annino Mauro</option>
+      <option value="Bonetti Rosaria">Bonetti Rosaria</option>
+      <option value="Previtali Manuel">Previtali Manuel</option>
+      <option value="Giocondo Pietro">Giocondo Pietro</option>
+      <option value="Lorenzi Stefano">Lorenzi Stefano</option>
+      <option value="Raffaini Maria Grazia">Raffaini Maria Grazia</option>
+      <option value="Nicolò Stefania Paola">Nicolò Stefania Paola</option>
+      <option value="Manicone Filomena">Manicone Filomena</option>
+      <option value="Titone Elisabetta">Titone Elisabetta</option>
+      <option value="Pievani Patrizia">Pievani Patrizia</option>
+      <option value="De Zuani Paolo">De Zuani Paolo</option>  
+    </select>
 
-    <div style="text-align: center; margin-top: 20px;">
-    <button onclick="confermaSelezione()" id="confirmButton">Conferma Selezione</button>
+    <button id="Invia">Invia tutte le valutazioni</button>
 
-</div>
+    <div id="caselleValutazione"></div>
+  </div>
 
-</div>
-<div id="contatti">
+  <div id="contatti">
     <h2>I nostri contatti</h2>
     <h4>contiero.leonardo07@majorana.org</h4>
     <h4>nacuta.nicolas07@majorana.org</h4>
@@ -142,57 +174,145 @@
     <h4>wassef.mena05@majorana.org</h4>
   </div>
 
-<div id="thankYouMessage" style="display:none; text-align:center; margin-top:50px;">
-    <h2>Grazie per la registrazione! 🎉</h2>
+  <div id="thankYouMessage" style="display:none; text-align:center; margin-top:50px;">
+    <h2>Grazie! 🎉</h2>
     <p style="font-size:18px; margin-top:15px;">
-        La tua registrazione è avvenuta con successo.<br>
+        Le tue valutazioni sono state inviate con successo!<br>
     </p>
-</div>
+  </div>
 
-<script>
+  <script>
 
-// ===== PASSA ALLA SEZIONE CLASSI =====
-function goToClasses() {
-    let user = document.getElementById("username").value.trim();
-    let nome = document.getElementById("nome").value.trim();
-    let pass = document.getElementById("password").value;
-    let conf = document.getElementById("confirm").value;
-    const confirmButton = document.getElementById("confirmButton");
+  const Accedi = document.getElementById('Accedi');
+  const loginDiv = document.getElementById('login');
+  const valutazioneDiv = document.getElementById('valutazione');
+  const messaggio = document.getElementById('messaggio');
 
-    if (!user || !nome || !pass || !conf) {
-        alert("Compila tutti i campi.");
-        return;
+  Accedi.addEventListener('click', () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if(username === "contiero" && password === "majorana") {
+      loginDiv.style.display = 'none';
+      valutazioneDiv.style.display = 'block';
+      
+    } else {
+      messaggio.textContent = "Credenziali errate, riprova.";
+      messaggio.style.color = "red";
+    }
+  });
+  const professoriDaValutare = [
+    "Amato Grazia","Annino Mauro","Bonetti Rosaria","Previtali Manuel",
+    "Giocondo Pietro","Lorenzi Stefano","Raffaini Maria Grazia",
+    "Nicolò Stefania Paola","Manicone Filomena","Titone Elisabetta",
+    "Pievani Patrizia","De Zuani Paolo"
+  ];
+
+  let feedbackSalvati = {};  
+  let ultimoProfSelezionato = null;
+
+  const selectProfessori = document.getElementById('professori');
+  const caselleDiv = document.getElementById('caselleValutazione');
+
+  selectProfessori.addEventListener('change', () => {
+    const professoreSelezionato = selectProfessori.value;
+
+    if (!professoreSelezionato) return;
+
+    if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+            feedbackSalvati[ultimoProfSelezionato] = {
+                positiva: pos.value,
+                negativa: neg.value
+            };
+        }
     }
 
-    if (pass !== conf) {
-        alert("Le password non coincidono.");
-        return;
+    ultimoProfSelezionato = professoreSelezionato;
+
+    caselleDiv.innerHTML = '';
+
+    const titoloPos = document.createElement('div');
+    titoloPos.textContent = "Valutazione positiva";
+    titoloPos.classList.add('titoloCasella');
+
+    const textareaPos = document.createElement('textarea');
+    textareaPos.id = "textareaPos";
+    textareaPos.rows = 5;
+    textareaPos.cols = 50;
+    textareaPos.placeholder = `Scrivi qui la valutazione positiva per ${professoreSelezionato}...`;
+    textareaPos.classList.add('casella');
+
+    const titoloNeg = document.createElement('div');
+    titoloNeg.textContent = "Valutazione negativa";
+    titoloNeg.classList.add('titoloCasella');
+
+    const textareaNeg = document.createElement('textarea');
+    textareaNeg.id = "textareaNeg";
+    textareaNeg.rows = 5;
+    textareaNeg.cols = 50;
+    textareaNeg.placeholder = `Scrivi qui la valutazione negativa per ${professoreSelezionato}...`;
+    textareaNeg.classList.add('casella');
+
+    caselleDiv.appendChild(titoloPos);
+    caselleDiv.appendChild(textareaPos);
+    caselleDiv.appendChild(titoloNeg);
+    caselleDiv.appendChild(textareaNeg);
+
+    if (feedbackSalvati[professoreSelezionato]) {
+        textareaPos.value = feedbackSalvati[professoreSelezionato].positiva;
+        textareaNeg.value = feedbackSalvati[professoreSelezionato].negativa;
     }
 
-    // Nascondo signup, mostro classi
-    document.getElementById("signupBox").style.display = "none";
-    document.getElementById("classSection").style.display = "block";
-}
-
-// ===== RICERCA CLASSI =====
-document.getElementById("searchBox").addEventListener("keyup", function() {
-    const val = this.value.toLowerCase();
-    const items = document.querySelectorAll(".class-item");
-
-    items.forEach(item => {
-        item.style.display = item.textContent.toLowerCase().includes(val)
-            ? "flex"
-            : "none";
+    [textareaPos, textareaNeg].forEach(textarea => {
+      textarea.addEventListener('input', () => {
+        const cursorPos = textarea.selectionStart;
+        textarea.selectionStart = textarea.selectionEnd = cursorPos;
+      });
     });
-});
+  });
 
-function confermaSelezione() {
-    document.getElementById("classSection").style.display = "none";
+  const Invia = document.getElementById('Invia');
+  const errore = document.getElementById('errore');
+
+  Invia.addEventListener('click', () => {
+
+    if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+            feedbackSalvati[ultimoProfSelezionato] = {
+                positiva: pos.value,
+                negativa: neg.value
+            };
+        }
+    }
+
+    let mancanti = [];
+
+    for (let prof of professoriDaValutare) {
+        if (!feedbackSalvati[prof] ||
+            feedbackSalvati[prof].positiva.trim() === "" ||
+            feedbackSalvati[prof].negativa.trim() === "") {
+            mancanti.push(prof);
+        }
+    }
+
+    if (mancanti.length > 0) {
+        errore.textContent = "Mancano le valutazioni per: " + mancanti.join(", ");
+        return;
+    }
+
+    valutazioneDiv.style.display = "none";
+    loginDiv.style.display = "none";
     document.getElementById("thankYouMessage").style.display = "block";
-}
+});
 
 
 </script>
-
 </body>
 </html>
