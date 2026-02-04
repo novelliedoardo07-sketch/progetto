@@ -3,98 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Vista Docente - Feedback</title>
-
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-    }
-
-    /* ===== BOTTONE HOME ===== */
-    #homeBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 6px 10px;
-      background-color: #0000CD;
-      color: white;
-      border: 2px solid black;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 12px;
-      width: auto;
-      z-index: 10;
-    }
-
-    #homeBtn:hover {
-      background-color: #00008B;
-    }
-
-    #selezioneClasse {
-      margin-bottom: 20px;
-    }
-
-    #contenitoreFeedback {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .colonna {
-      flex: 1;
-      border: 3px solid;
-      padding: 15px;
-      border-radius: 8px;
-      overflow-y: auto;
-      max-height: 70vh;
-      background-color: #0000CD;
-      color: white;
-    }
-
-    .colonna h3 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .commento {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-
-    /* ===== CONTATTI ===== */
-    #contatti {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #0000CD;
-      color: white;
-      padding: 15px;
-      font-size: 14px;
-      border-top: 2px solid black;
-    }
-
-    #contatti h4 {
-      margin: 5px 0;
-      font-weight: normal;
-    }
-
-    #contatti h2 {
-      text-align: center;
-    }
-
-    #logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 80px;
-      height: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="styles_unified.css">
 </head>
 
 <body>
@@ -103,6 +12,7 @@
   <button id="homeBtn">Home</button>
 
   <h1>Feedback ricevuti</h1>
+  <img src="logo.png" alt="logo scuola" id="logo3">
 
   <div id="selezioneClasse">
     <label for="classe">Seleziona la classe: </label>

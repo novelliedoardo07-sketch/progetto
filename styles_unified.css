@@ -1,0 +1,387 @@
+/* ===== RESET BASE ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    padding-bottom: 140px;
+    color: #000;
+    margin: 0;
+}
+
+/* ===== TITOLI ===== */
+h1, h2 {
+    text-align: center;
+    color: #0000CD;
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+/* ===== LOGO ===== */
+#logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 120px;
+}
+
+#logo1,
+#logo2,
+#logo3 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: auto;
+}
+
+/* ===== BOTTONE HOME ===== */
+#homeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 10px;
+    background-color: #0000CD;
+    color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    width: auto;
+    z-index: 10;
+}
+
+#homeBtn:hover {
+    background-color: #00008B;
+}
+
+/* ===== BOX LOGIN / VALUTAZIONE ===== */
+#login,
+#valutazione {
+    background-color: white;
+    max-width: 420px;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+#valutazione {
+    display: none;
+}
+
+#selezioneClasse {
+    margin-bottom: 20px;
+}
+
+#classSection {
+    display: none;
+}
+
+/* ===== LABEL ===== */
+label {
+    font-size: 15px;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ===== INPUT / SELECT / TEXTAREA ===== */
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+}
+
+textarea {
+    resize: none;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== BOTTONI ===== */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #0000CD;
+    color: white;
+    transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #00008B;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ===== MESSAGGI ===== */
+#messaggio {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#errore {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: red;
+    font-weight: bold;
+}
+
+/* ===== CASELLE VALUTAZIONE ===== */
+#caselleValutazione {
+    margin-top: 20px;
+}
+
+.casella {
+    margin-bottom: 15px;
+}
+
+.titoloCasella {
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+/* ===== SELECT PROFESSORI ===== */
+#professori {
+    margin-top: 10px;
+}
+
+/* ===== FOOTER CONTATTI ===== */
+#contatti {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0000CD;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 2px solid black;
+}
+
+#contatti h2 {
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#contatti h4 {
+    margin: 5px 0;
+    font-weight: normal;
+}
+
+/* ===== FEEDBACK CONTAINER ===== */
+#contenitoreFeedback {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.colonna {
+    flex: 1;
+    border: 3px solid;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-y: auto;
+    max-height: 70vh;
+    background-color: #0000CD;
+    color: white;
+}
+
+.colonna h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.commento {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: black;
+}
+
+/* ===== SIGNUP BOX ===== */
+#signupBox {
+    background: white;
+    width: 350px;
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+#signupBox input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+#signupBox button {
+    width: 100%;
+    padding: 10px;
+    background: #0000CD;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+#signupBox button:hover {
+    background: #00008B;
+}
+
+/* ===== SEARCH BOX ===== */
+#searchBox {
+    display: block;
+    width: 300px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+/* ===== CONTENITORE ANNATE ===== */
+.year-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* ===== COLONNA ANNO ===== */
+.year-column {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.year-column h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    color: #2980b9;
+    text-align: center;
+}
+
+/* ===== CLASSE ===== */
+.class-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* ===== BOTTONE CONFERMA ===== */
+#confirmButton {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #0000CD;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0 auto;
+    display: block;
+}
+
+#confirmButton:hover {
+    background-color: #00008B;
+}
+
+#confirmButton:active {
+    transform: scale(0.98);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .year-container {
+        flex-direction: column;
+    }
+    
+    #contenitoreFeedback {
+        flex-direction: column;
+    }
+
+    #login,
+    #valutazione {
+        margin: 0 10px 30px 10px;
+    }
+
+    #homeBtn {
+        top: 10px;
+        right: 10px;
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 600px) {
+    #login,
+    #valutazione {
+        margin: 0 10px 30px 10px;
+    }
+
+    #homeBtn {
+        top: 10px;
+        right: 10px;
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+}
