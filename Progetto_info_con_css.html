@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Valutazione professori Majorana</title>
+  <link rel="stylesheet" href="styles_unified.css">
+</head>
+<body>
+
+  <p id="errore"></p>
+  <h1>Valutazione professori Majorana</h1>
+  <img src="logo.png" alt="logo scuola" id="logo1">
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Accedi per valutare</h2>
+    <label>Codice: <input type="text" id="username"></label>
+    <label>Password: <input type="password" id="password"></label>
+    <button id="Accedi">Accedi</button>
+    <p id="messaggio"></p>
+  </div>
+
+  <!-- VALUTAZIONE -->
+  <div id="valutazione">
+
+    <!-- BOTTONE HOME SOLO QUI -->
+    <button id="homeBtn">Home</button>
+
+    <label for="professori">Seleziona un professore:</label>
+    <select id="professori">
+      <option value="">--Scegli--</option>
+      <option value="Amato Grazia">Amato Grazia</option>
+      <option value="Annino Mauro">Annino Mauro</option>
+      <option value="Bonetti Rosaria">Bonetti Rosaria</option>
+      <option value="Previtali Manuel">Previtali Manuel</option>
+      <option value="Giocondo Pietro">Giocondo Pietro</option>
+      <option value="Lorenzi Stefano">Lorenzi Stefano</option>
+      <option value="Raffaini Maria Grazia">Raffaini Maria Grazia</option>
+      <option value="Nicolò Stefania Paola">Nicolò Stefania Paola</option>
+      <option value="Manicone Filomena">Manicone Filomena</option>
+      <option value="Titone Elisabetta">Titone Elisabetta</option>
+      <option value="Pievani Patrizia">Pievani Patrizia</option>
+      <option value="De Zuani Paolo">De Zuani Paolo</option>
+    </select>
+
+    <button id="Invia">Invia tutte le valutazioni</button>
+
+    <div id="caselleValutazione"></div>
+  </div>
+
+  <!-- MESSAGGIO FINALE -->
+  <div id="thankYouMessage" style="display:none; text-align:center; margin-top:50px;">
+    <h2>Grazie! 🎉</h2>
+    <p style="font-size:18px; margin-top:15px;">
+      Le tue valutazioni sono state inviate con successo!
+    </p>
+  </div>
+
+  <!-- CONTATTI -->
+  <div id="contatti">
+    <h2>I nostri contatti</h2>
+    <h4>contiero.leonardo07@majorana.org</h4>
+    <h4>nacuta.nicolas07@majorana.org</h4>
+    <h4>novelli.edoardo07@majorana.org</h4>
+    <h4>wassef.mena05@majorana.org</h4>
+  </div>
+
+  <script>
+    // BOTTONE HOME
+    document.getElementById("homeBtn").addEventListener("click", () => {
+
+    const confermaHome = confirm("Vuoi davvero tornare alla pagina iniziale? Le valutazioni non salvate andranno perse.");
+    if (!confermaHome) return;
+
+    document.getElementById("valutazione").style.display = "none";
+    document.getElementById("login").style.display = "block";
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("caselleValutazione").innerHTML = "";
+    document.getElementById("errore").innerHTML = "";
+});
+
+
+    // LOGIN
+    const Accedi = document.getElementById('Accedi');
+    const loginDiv = document.getElementById('login');
+    const valutazioneDiv = document.getElementById('valutazione');
+    const messaggio = document.getElementById('messaggio');
+
+    Accedi.addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === "contiero" && password === "majorana") {
+        loginDiv.style.display = 'none';
+        valutazioneDiv.style.display = 'block';
+      } else {
+        messaggio.textContent = "Credenziali errate, riprova.";
+        messaggio.style.color = "red";
+      }
+    });
+
+    // PAROLE VIETATE
+    const paroleVietate = [
+      "cazzo","cazz0","c4zzo","coglione","stronzo","fottiti","vaffanculo",
+      "fanculo","frocio","sparati","ammazzati","porca puttana","porco",
+      "porca troia","troia","troiata","culo","figlio di puttana",
+      "pezzo di merda","merda","bastardo","bastarda","zoccola",
+      "lurido","sporco","rompe i coglioni","rompi palle","rompiscatole",
+      "schifoso","idiota","cretino","imbecille","maniaco","pervertito",
+      "negro","negraccio","zingaro","negra","terrone","terrona"
+    ];
+
+    function gestisciParoleVietate(testo) {
+      let testoPulito = testo;
+      paroleVietate.forEach(parola => {
+        const censura = "*".repeat(parola.length);
+        testoPulito = testoPulito.replaceAll(parola, censura);
+      });
+      return testoPulito;
+    }
+
+    // LOGICA VALUTAZIONI
+    const professoriDaValutare = [
+      "Amato Grazia","Annino Mauro","Bonetti Rosaria","Previtali Manuel",
+      "Giocondo Pietro","Lorenzi Stefano","Raffaini Maria Grazia",
+      "Nicolò Stefania Paola","Manicone Filomena","Titone Elisabetta",
+      "Pievani Patrizia","De Zuani Paolo"
+    ];
+
+    let feedbackSalvati = {};
+    let ultimoProfSelezionato = null;
+
+    const selectProfessori = document.getElementById('professori');
+    const caselleDiv = document.getElementById('caselleValutazione');
+
+    selectProfessori.addEventListener('change', () => {
+      const professoreSelezionato = selectProfessori.value;
+
+      if (!professoreSelezionato) return;
+
+      if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+          feedbackSalvati[ultimoProfSelezionato] = {
+            positiva: pos.value,
+            negativa: neg.value
+          };
+        }
+      }
+
+      ultimoProfSelezionato = professoreSelezionato;
+
+      caselleDiv.innerHTML = '';
+
+      const titoloPos = document.createElement('div');
+      titoloPos.textContent = "Valutazione positiva";
+      titoloPos.classList.add('titoloCasella');
+
+      const textareaPos = document.createElement('textarea');
+      textareaPos.id = "textareaPos";
+      textareaPos.rows = 5;
+      textareaPos.placeholder = `Scrivi qui la valutazione positiva per ${professoreSelezionato}...`;
+
+      const titoloNeg = document.createElement('div');
+      titoloNeg.textContent = "Valutazione negativa";
+      titoloNeg.classList.add('titoloCasella');
+
+      const textareaNeg = document.createElement('textarea');
+      textareaNeg.id = "textareaNeg";
+      textareaNeg.rows = 5;
+      textareaNeg.placeholder = `Scrivi qui la valutazione negativa per ${professoreSelezionato}...`;
+
+      caselleDiv.appendChild(titoloPos);
+      caselleDiv.appendChild(textareaPos);
+      caselleDiv.appendChild(titoloNeg);
+      caselleDiv.appendChild(textareaNeg);
+
+      if (feedbackSalvati[professoreSelezionato]) {
+        textareaPos.value = feedbackSalvati[professoreSelezionato].positiva;
+        textareaNeg.value = feedbackSalvati[professoreSelezionato].negativa;
+      }
+
+      [textareaPos, textareaNeg].forEach(textarea => {
+        textarea.addEventListener('input', () => {
+          const cursorPos = textarea.selectionStart;
+          textarea.value = gestisciParoleVietate(textarea.value);
+          textarea.selectionStart = textarea.selectionEnd = cursorPos;
+        });
+      });
+    });
+
+    // INVIO FINALE
+    const Invia = document.getElementById('Invia');
+    const errore = document.getElementById('errore');
+
+    Invia.addEventListener('click', () => {
+      if (ultimoProfSelezionato !== null) {
+        const pos = document.getElementById("textareaPos");
+        const neg = document.getElementById("textareaNeg");
+
+        if (pos && neg) {
+          feedbackSalvati[ultimoProfSelezionato] = {
+            positiva: pos.value,
+            negativa: neg.value
+          };
+        }
+      }
+
+      let mancanti = [];
+
+      for (let prof of professoriDaValutare) {
+        if (!feedbackSalvati[prof] ||
+            feedbackSalvati[prof].positiva.trim() === "" ||
+            feedbackSalvati[prof].negativa.trim() === "") {
+          mancanti.push(prof);
+        }
+      }
+
+      if (mancanti.length > 0) {
+    const listaRossa = mancanti
+      .map(nome => `<span style="color:red; font-weight:bold;">${nome}</span>`)
+      .join(", ");
+
+    errore.innerHTML = `Mancano le valutazioni per: ${listaRossa}`;
+    return;
+}
+
+// Conferma finale
+const conferma = confirm("Sei sicuro di voler inviare tutte le valutazioni?");
+if (!conferma) return;
+
+valutazioneDiv.style.display = "none";
+loginDiv.style.display = "none";
+document.getElementById("thankYouMessage").style.display = "block";
+
+
+      valutazioneDiv.style.display = "none";
+      loginDiv.style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
