@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Valutazione professori Majorana</title>
+  <link rel="stylesheet" href="styles_unified.css">
+</head>
+<body>
+
+  <h1>Valutazione professori Majorana</h1>
+  <img src="logo.png" alt="logo scuola" id="logo1">
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Accedi per valutare</h2>
+    <label>Codice: <input type="text" id="username"></label>
+    <label>Password: <input type="password" id="password"></label>
+    <button id="Accedi">Accedi</button>
+    <p id="messaggio"></p>
+  </div>
+
+  <!-- CONTATTI -->
+  <div id="contatti">
+    <h2>I nostri contatti</h2>
+    <h4>contiero.leonardo07@majorana.org</h4>
+    <h4>nacuta.nicolas07@majorana.org</h4>
+    <h4>novelli.edoardo07@majorana.org</h4>
+    <h4>wassef.mena05@majorana.org</h4>
+  </div>
+
+  <script>
+    // LOGIN
+    const Accedi = document.getElementById('Accedi');
+    const messaggio = document.getElementById('messaggio');
+
+    Accedi.addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === "contiero" && password === "majorana") {
+        // Reindirizza a valutazione.html
+        window.location.href = "valutazione.html";
+      } else {
+        messaggio.textContent = "Credenziali errate, riprova.";
+        messaggio.style.color = "red";
+      }
+    });
+
+    // Nascondi elementi non necessari in index.html
+    document.addEventListener('DOMContentLoaded', () => {
+      const valutazione = document.getElementById('valutazione');
+      if (valutazione) {
+        valutazione.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
